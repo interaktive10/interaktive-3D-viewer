@@ -1,0 +1,251 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet"/>
+
+<!-- <link href="../public/css/style.css" rel="stylesheet" type="text/css"> -->
+
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+  
+</script>
+<% console.log(gltfsrc) %>
+<% console.log(usdzsrc) %>
+
+<model-viewer id="model_viewer" src=<%= gltfsrc%> alt="A 3D model" preload ar ar-modes="scene-viewer quick-look webxr" environment-image="neutral" shadow-intensity="0.97" exposure="2" auto-rotate
+    interaction-prompt="auto" camera-controls autoplay="true" quick-look-browsers="safari chrome" autoplay 
+    camera-orbit="0deg 75deg auto" min-field-of-view="10deg" max-field-of-view="100deg" min-camera-orbit="auto 0deg 80%"
+    max-camera-orbit="auto 180deg 100%">
+  <button slot="ar-button" id="ar-button"> Activate AR</button>
+</model-viewer>
+
+
+<!-- ios-src=<%= usdzsrc%>  -->
+
+<style>
+    #model_viewer {
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
+    }
+    #ar-button {
+      position: absolute;
+      left: 50%;
+      bottom: 2%;
+      transform: translate(-50%,-50%);
+      margin:0 auto;
+      background-color: #b9b9b9;
+      color: #191919;
+      border: 2px solid #000000;
+      border-radius: 8px;
+      padding: 1rem;
+      font-size: 2rem;
+	  font-weight: bold;
+      min-height: 3vh;
+      min-width: 9vw;
+    }
+
+	@media screen and (max-width:420px) {
+	#ar-button {
+        font-size: 1rem;
+		bottom: 6%;
+    }}
+	@media screen and (max-height:800px) {
+	#ar-button {
+        font-size: 1rem;
+        bottom: 8%;
+        
+    }}
+</style>
+
+
+  
+<!-- <div id="container">
+
+	<div class="copy-text" onclick="copyCode()">
+       
+		&lt;iframe src="https://impassionedagileoutcome.interaktiveback.repl.co/view?ApiKey=jCzLzdoJR5" width="600" height="600" webkitallowfullscreen allow='camera; gyroscope; accelerometer; magnetometer; fullscreen;' &gt;&lt;/iframe&gt;
+
+
+
+
+ 		<button><i class="fa fa-clone"></i></button> 
+	</div>
+	<div id="code">
+		<p> Code Copied Succesfully</p>
+	</div>
+
+</div>  -->
+<!--    <button id=view onclick="clip()">View Embed Code</button> -->
+
+
+
+<!-- <script>
+function copyCode() {
+	var range = document.createRange();
+	range.selectNode(document.querySelector(".copy-text"));
+  window.getSelection().removeAllRanges();
+	window.getSelection().addRange(range);
+	document.execCommand("copy");
+  window.getSelection().removeAllRanges();// to deselect
+	var x = document.getElementById("code");
+	if (x.style.display === "none") {
+		x.style.display = "block";
+	} else {
+		x.style.display = "none";
+	}
+}
+  var x = document.getElementById("code");
+	if (x.style.display === "none") {
+		x.style.display = "block";
+	} else {
+		x.style.display = "none";
+	}
+
+//   document.getElementById("url").innerHTML = 
+// window.location.href;
+
+document.getElementById("container").style.display = "none";
+ // console.log(window.location.href);
+
+  if(!window.location.href.includes("impassionedagileoutcome"))
+  {
+    document.getElementById("view").style.display = "none";
+  }
+
+function clip() {
+	document.getElementById("container").style.display = "block";
+	document.getElementById("view").style.display = "none";
+}
+</script> -->
+
+<!-- <style>
+
+
+body {
+	font-family: "Roboto", sans-serif;
+	background: #ffffff;
+}
+#view {
+  position: absolute;
+	top: 85%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 10px;
+	font-size: 18px;
+	color: #111;
+	background: #5784f5;
+	color: #fff;
+	font-size: 18px;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+
+#container {
+	position: absolute;
+	top: 90%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+#view1 {
+	position: absolute;
+	top: 85%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+#code {
+  
+	padding: 10px;
+	font-size: 18px;
+	color: #111;
+	font-size: 18px;
+	left: 50%;
+}
+
+.copy-text {
+	
+	padding: 10px;
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	display: flex;
+}
+.copy-text input.text {
+	padding: 10px;
+	font-size: 18px;
+	color: #555;
+	border: none;
+	outline: none;
+    display:flex;
+}
+.copy-text button {
+	padding: 5px;
+	background: #5784f5;
+	color: #fff;
+	font-size: 16px;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.copy-text button:active {
+	background: #809ce2;
+}
+.copy-text button:before {
+	content: "copy";
+	position: absolute;
+	top: -45px;
+	right: 0px;
+	background: #5c81dc;
+	padding: 8px 10px;
+	border-radius: 20px;
+	font-size: 15px;
+	display: none;
+}
+.copy-text button:after {
+	content: "";
+	position: absolute;
+	top: -45px;
+	right: 0px;
+	background: #5c81dc;
+	padding: 8px 10px;
+	border-radius: 20px;
+	font-size: 15px;
+	display: none;
+}
+
+.copy-text.active button:before #copy-text.active button:after {
+	display: block;
+}
+
+</style> -->
+
+<!--  <script>
+    const android = /Android/i.test(navigator.userAgent);
+ 
+  
+    if (!android) {
+      document.getElementById("Hotspot1").style.visibility = 'hidden';
+      document.getElementById("Hotspot2").style.visibility = 'hidden';
+      document.getElementById("Hotspot3").style.visibility = 'hidden';
+      document.getElementById("Hotspot4").style.visibility = 'hidden';
+     
+       window.onload = function () {
+      setTimeout(loadAfterTime, 3000)
+    };
+    function loadAfterTime() {
+        document.getElementById("ar-button").click();
+      }
+      }     
+   
+    else {
+      document.getElementById("reveal").arModes="webxr quick-look scene-viewer"
+      }
+  </script> -->
+
+  
+
+
+
+
+
