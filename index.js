@@ -52,52 +52,51 @@ app.get("/view", function(req, res) {
 
   console.log('Received ApiKey:', req.query.ApiKey);
 
-  res.render(path.join(__dirname, 'views', 'Viewer'), { gltfsrc: 'https://interaktive10.github.io/hosted-assets/Westcoast_Scooter_01_RC_Scaled.glb', usdzsrc: 'https://interaktive10.github.io/hosted-assets/hex_table.usdz' });
 
 
 
-  // MODEL.find({ api_key: req.query.ApiKey }, { glb: 1, usdz: 1, project_name: 1 }, function(err, model) {
+  MODEL.find({ api_key: req.query.ApiKey }, { glb: 1, usdz: 1, project_name: 1 }, function(err, model) {
 
 
-  //   if (model.length == 0 || err)
-  //     {//alert("INVAILD MODEL");
-  //     console.log('invalid model');
-  //     console.error('Error querying model:', err);
-  //     console.error('Query result:', model);
-  //     res.status(500).json({
-  //       message: 'Invalid model',
-  //       error: err,
-  //       queryResult: model
-  //     });
-  //     return;
-  //   }
+    if (model.length == 0 || err)
+      {//alert("INVAILD MODEL");
+      console.log('invalid model');
+      console.error('Error querying model:', err);
+      console.error('Query result:', model);
+      res.status(500).json({
+        message: 'Invalid model',
+        error: err,
+        queryResult: model
+      });
+      return;
+    }
       
-  //   else {
-  //     // console.log("12345")
+    else {
+      // console.log("12345")
 
-  //     //MODEL.find({_id: model}, ,function(err2, model1){
-  //      console.log(model);
-
-
-  //       model.forEach(function(models) {
-  //       gltfsrcValue = models.glb;
-  //       //console.log(gltfsrcValue);
-  //       usdzsrcValue = models.usdz;
-  //       //console.log(usdzsrcValue);
-  //       projectName = models.project_name;
-
-  //     })
-
-  //   //  console.log(projectName);
-  //     // res.render('Viewer', { gltfsrc: gltfsrcValue, usdzsrc: usdzsrcValue });
-  //     res.render(path.join(__dirname, 'views', 'Viewer'), { gltfsrc: 'https://interaktive10.github.io/hosted-assets/Westcoast_Scooter_01_RC_Scaled.glb', usdzsrc: 'https://interaktive10.github.io/hosted-assets/hex_table.usdz' });
-
-  //     // res.render("createUserCanvas.ejs",{usdzsrc : usdzsrcValue});
-
-  //   }
+      //MODEL.find({_id: model}, ,function(err2, model1){
+       console.log(model);
 
 
-  // })
+      model.forEach(function(models) {
+        gltfsrcValue = models.glb;
+        //console.log(gltfsrcValue);
+        usdzsrcValue = models.usdz;
+        //console.log(usdzsrcValue);
+        projectName = models.project_name;
+
+      })
+
+    //  console.log(projectName);
+      // res.render('Viewer', { gltfsrc: gltfsrcValue, usdzsrc: usdzsrcValue });
+      res.render(path.join(__dirname, 'views', 'Viewer'), { gltfsrc: 'https://interaktive10.github.io/hosted-assets/Westcoast_Scooter_01_RC_Scaled.glb', usdzsrc: 'https://interaktive10.github.io/hosted-assets/hex_table.usdz' });
+
+      // res.render("createUserCanvas.ejs",{usdzsrc : usdzsrcValue});
+
+    }
+
+
+  })
 }
   //}
 )
