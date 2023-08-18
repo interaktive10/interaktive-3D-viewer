@@ -11,7 +11,7 @@ const https = require('https'); const fs = require('fs');
 const { query } = require('express');
 
 const path = require('path');
-app.set('views', path.join(__dirname, 'views'));
+app.set('view', path.join(__dirname, 'views'));
 
 
 
