@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/85924d2d-dc90-407e-897a-ccd795971d05/AppServices/subscriptions/85924d2d-dc90-407e-897a-ccd795971d05/resourceGroups/AppServiceQS-rg/providers/Microsoft.Web/sites/testing3dviewer",
+    "appService.deploySubpath": "."
+}
