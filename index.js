@@ -10,8 +10,8 @@ const app = express();
 const https = require('https'); const fs = require('fs');
 const { query } = require('express');
 
-// const path = require('path');
-// app.set('view', path.join(__dirname, 'views'));
+const path = require('path');
+app.set('views', path.join(__dirname, 'views'));
 
 
 
