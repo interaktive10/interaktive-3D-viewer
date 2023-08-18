@@ -88,7 +88,9 @@ app.get("/view", function(req, res) {
       })
 
     //  console.log(projectName);
-      res.render('Viewer', { gltfsrc: gltfsrcValue, usdzsrc: usdzsrcValue });
+      // res.render('Viewer', { gltfsrc: gltfsrcValue, usdzsrc: usdzsrcValue });
+      res.render(path.join(__dirname, 'views', 'Viewer'), { gltfsrc: gltfsrcValue, usdzsrc: usdzsrcValue });
+
       // res.render("createUserCanvas.ejs",{usdzsrc : usdzsrcValue});
 
     }
