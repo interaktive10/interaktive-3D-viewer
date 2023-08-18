@@ -10,8 +10,8 @@ const app = express();
 const https = require('https'); const fs = require('fs');
 const { query } = require('express');
 
-const path = require('path');
-app.set('view', path.join(__dirname, 'views'));
+// const path = require('path');
+// app.set('view', path.join(__dirname, 'views'));
 
 
 
@@ -191,3 +191,5 @@ if (port == null || port == "") {
 }
 app.listen(port, () => console.log("Listening on port from " + port + __dirname))
 //https.createServer({    key: fs.readFileSync('./key.pem'),    cert: fs.readFileSync('./cert.pem'),    passphrase: 'test'}, app).listen(port);
+
+module.exports = app;
