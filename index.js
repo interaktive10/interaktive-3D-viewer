@@ -31,15 +31,11 @@ app.use(function(req, res, next) {
   return next();
 });
 
-// mongoose.connect("mongodb+srv://admin-farha:Test123@interaktivecluster.ixp18.mongodb.net/interaktiveDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true, });
+const connectionString = process.env.MONGODB_CONNECTION_STRING;
+mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
 
-mongoose.connect("mongodb+srv://admin-farha:Test123@interaktivecluster.ixp18.mongodb.net/interaktiveDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log('Database connection successful');
-  })
-  .catch(err => {
-    console.error('Database connection error:', err);
-  });
+
+// mongoose.connect("mongodb+srv://admin-farha:Test123@interaktivecluster.ixp18.mongodb.net/interaktiveDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true, });
 
 
 const modelsSchema = new mongoose.Schema({
