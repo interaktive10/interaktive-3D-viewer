@@ -15,13 +15,6 @@ app.set('views', path.join(__dirname, 'views'));
 
 
 
-//GET home
-//app.get('/', (req, res) => {    res.send('Hello Worddfld');});
-// we will pass our 'app' to 'https'
-//https.createServer({    key: fs.readFileSync('./key.pem'),    cert: fs.readFileSync('./cert.pem'),    passphrase: 'test'}, app).listen(3000);
-
-//const app = express();
-
 app.set('view engine', 'ejs');
 
 app.use(function(req, res, next) {
@@ -60,16 +53,10 @@ app.get("/view", function(req, res) {
   console.log('Received ApiKey:', req.query.ApiKey);
 
 
-  // projectName = req.query.ProjectName + ".ejs";
-  // const url1 = "https://interaktive1.el.r.appspot.com/View";
 
-  // const url2 = req.originalUrl;
-  // var source = url1 + url2.substr(20);
-  // console.log(source);
 
   MODEL.find({ api_key: req.query.ApiKey }, { glb: 1, usdz: 1, project_name: 1 }, function(err, model) {
-    //console.log(model);
-    //console.log(model.length);
+
 
     if (model.length == 0 || err)
       {//alert("INVAILD MODEL");
@@ -90,12 +77,6 @@ app.get("/view", function(req, res) {
       //MODEL.find({_id: model}, ,function(err2, model1){
        console.log(model);
 
-      // if(err2)
-      //   console.log(err2);
-      // else{
-      //console.log("265122")
-
-      //GLB.find({_id: users,model_number: req.query.ModelNumber},{model_number:1, _id:0} ,function(err2, models){
 
       model.forEach(function(models) {
         gltfsrcValue = models.glb;
@@ -107,7 +88,7 @@ app.get("/view", function(req, res) {
       })
 
     //  console.log(projectName);
-      res.render(projectName, { gltfsrc: gltfsrcValue, usdzsrc: usdzsrcValue });
+      res.render('Viewer', { gltfsrc: gltfsrcValue, usdzsrc: usdzsrcValue });
       // res.render("createUserCanvas.ejs",{usdzsrc : usdzsrcValue});
 
     }
@@ -120,79 +101,6 @@ app.get("/view", function(req, res) {
 //})
 
 
-
-
-
-
-
-// app.get('/viewer', function (req, res) {
-
-//    USER.find({api_key: req.query.ApiKey},{_id:1}, function(err, users){
-//         if (err)
-//         console.log(err);
-//         else{
-//           URL.find({_id: users},{urls:1, _id:0} ,function(err2, urlLinks){
-//             if(err2)
-//               console.log(err2);
-//               else{         
-//               urlLinks.forEach(function(urlLink){              
-//                  gltfsrcValue = urlLink.urls.get(req.query.UrlKey);       
-//                  viewerLinkValue = "https://interaktive-viewer.herokuapp.com/view?ApiKey="+req.query.ApiKey+"&UrlKey="+req.query.UrlKey;
-//                })
-//                res.render("DogAnimation.ejs",{gltfsrc : gltfsrcValue, viewerLink: viewerLinkValue});
-//                 }
-
-//               })
-//         }
-
-//     })
-//   })
-
-// app.get("/view", function(req,res){
-//  // const projectName = req.query.ProjectName + ".ejs";
-
-
-
-//    MODEL.find({api_key: req.query.ApiKey, model_number: req.query.ModelNumber},{glb:1, usdz:1}, function(err, model){
-//     //  console.log(model);
-//     //  console.log(model.length);
-
-//      if (model.length == 0 || err)
-//       //alert("INVAILD MODEL");
-//       console.log('invalid model');
-
-
-
-//     else{
-//       // console.log("12345")
-
-//        //MODEL.find({_id: model}, ,function(err2, model1){
-//         // console.log(model1);
-
-//         // if(err2)
-//         //   console.log(err2);
-//           // else{
-//             //console.log("265122")
-
-//             //GLB.find({_id: users,model_number: req.query.ModelNumber},{model_number:1, _id:0} ,function(err2, models){
-
-//              model.forEach(function(models){
-//              gltfsrcValue = models.glb;
-//              //console.log(gltfsrcValue);
-//              usdzsrcValue = models.usdz;
-//              //console.log(usdzsrcValue);
-
-//           })
-//            res.render("nobutton.ejs",{gltfsrc : gltfsrcValue, usdzsrc : usdzsrcValue});
-//           // res.render("createUserCanvas.ejs",{usdzsrc : usdzsrcValue});
-
-//             }
-
-
-//         })
-//       }
-//  //}
-//  )
 
 let port = process.env.PORT;
 if (port == null || port == "") {
