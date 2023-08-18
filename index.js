@@ -57,6 +57,9 @@ app.get("/", function(req, res) {
 
 app.get("/view", function(req, res) {
 
+  console.log('Received ApiKey:', req.query.ApiKey);
+
+
   // projectName = req.query.ProjectName + ".ejs";
   // const url1 = "https://interaktive1.el.r.appspot.com/View";
 
@@ -69,8 +72,18 @@ app.get("/view", function(req, res) {
     //console.log(model.length);
 
     if (model.length == 0 || err)
-      //alert("INVAILD MODEL");
+      {//alert("INVAILD MODEL");
       console.log('invalid model');
+      console.error('Error querying model:', err);
+      console.error('Query result:', model);
+      res.status(500).json({
+        message: 'Invalid model',
+        error: err,
+        queryResult: model
+      });
+      return;
+    }
+      
     else {
       // console.log("12345")
 
